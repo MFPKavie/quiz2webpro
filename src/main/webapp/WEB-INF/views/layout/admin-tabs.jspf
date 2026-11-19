@@ -1,0 +1,7 @@
+<h1 class="section-title">Admin</h1>
+<nav class="tabs" aria-label="Admin pages">
+    <a href="${ctx}/admin/reports" aria-current="${adminTab == 'reports' ? 'page' : 'false'}">
+        Reports<c:if test="${openReports > 0}"> <span class="tabs__count">${openReports}</span></c:if>
+    </a>
+    <a href="${ctx}/admin/categories" aria-current="${adminTab == 'categories' ? 'page' : 'false'}">Categories</a>
+</nav>
