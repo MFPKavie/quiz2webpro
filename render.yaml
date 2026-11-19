@@ -1,0 +1,15 @@
+# Render Blueprint: one free Docker web service. Render asks for the three database values on first deploy.
+services:
+  - type: web
+    name: passiton
+    runtime: docker
+    plan: free
+    envVars:
+      - key: PORT
+        value: "8080"
+      - key: PIO_DB_URL
+        sync: false
+      - key: PIO_DB_USER
+        sync: false
+      - key: PIO_DB_PASSWORD
+        sync: false

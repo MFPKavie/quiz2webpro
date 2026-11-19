@@ -1,0 +1,42 @@
+<article class="card card--${l.status}">
+    <a class="card__link" href="${ctx}/listing?id=${l.id}">
+        <div class="card__photo">
+            <c:choose>
+                <c:when test="${not empty l.coverPhoto}">
+                    <img src="${ctx}/photo/${fn:escapeXml(l.coverPhoto)}" alt="Photo of ${fn:escapeXml(l.title)}"
+                         width="400" height="300" loading="lazy">
+                </c:when>
+                <c:otherwise>
+                    <img class="card__placeholder" src="${ctx}/img/placeholder.svg" alt="" width="400" height="300" loading="lazy">
+                </c:otherwise>
+            </c:choose>
+            <c:if test="${l.status != 'available'}">
+                <span class="ribbon ribbon--${l.status}">${l.statusLabel}</span>
+            </c:if>
+        </div>
+        <div class="card__body">
+            <h3 class="card__title"><c:out value="${l.title}"/></h3>
+            <p class="card__meta">
+                <span class="chip chip--${l.itemCondition}">${l.conditionLabel}</span>
+                <span class="card__category"><c:out value="${l.categoryName}"/></span>
+            </p>
+            <p class="card__seller">by <c:out value="${l.sellerName}"/></p>
+        </div>
+    </a>
+    <span class="sticker card__sticker"><c:choose><c:when test="${l.price == 0}">FREE</c:when><c:otherwise><small class="sticker__cur">Rp</small>${l.priceNumber}</c:otherwise></c:choose></span>
+
+<%-- the heart sits outside the card link: a button inside a link is not allowed --%>
+    <c:choose>
+        <c:when test="${empty sessionScope.user}">
+            <button type="button" class="heart" data-login aria-label="Log in to save ${fn:escapeXml(l.title)}">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-9.3-9.4A4.9 4.9 0 0 1 12 6.6a4.9 4.9 0 0 1 9.3 4.5c-1.8 4.8-9.3 9.4-9.3 9.4z"/></svg>
+            </button>
+        </c:when>
+        <c:when test="${sessionScope.user.id != l.sellerId}">
+            <button type="button" class="heart" data-listing="${l.id}"
+                    aria-pressed="${not empty savedIds and savedIds.contains(l.id)}" aria-label="Save ${fn:escapeXml(l.title)}">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-9.3-9.4A4.9 4.9 0 0 1 12 6.6a4.9 4.9 0 0 1 9.3 4.5c-1.8 4.8-9.3 9.4-9.3 9.4z"/></svg>
+            </button>
+        </c:when>
+    </c:choose>
+</article>
