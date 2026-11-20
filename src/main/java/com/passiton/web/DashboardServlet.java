@@ -35,8 +35,8 @@ public class DashboardServlet extends HttpServlet {
         User me = (User) req.getSession().getAttribute("user");
         try {
             req.setAttribute("byStatus", listingDao.countByStatus(me.getId()));
-            req.setAttribute("earned", rupiah(offerDao.totalEarned(me.getId())));
-            req.setAttribute("spent", rupiah(offerDao.totalSpent(me.getId())));
+            req.setAttribute("earned", com.passiton.util.Money.rp(offerDao.totalEarned(me.getId())));
+            req.setAttribute("spent", com.passiton.util.Money.rp(offerDao.totalSpent(me.getId())));
             req.setAttribute("bought", offerDao.countBought(me.getId()));
             double[] rating = reviewDao.ratingSummary(me.getId());
             req.setAttribute("reviewCount", (int) rating[1]);
@@ -54,9 +54,5 @@ public class DashboardServlet extends HttpServlet {
             throw new ServletException("Could not build the dashboard", e);
         }
         req.getRequestDispatcher("/WEB-INF/views/dashboard.jsp").forward(req, resp);
-    }
-
-    private static String rupiah(int amount) {
-        return com.passiton.util.Money.rp(amount);
     }
 }

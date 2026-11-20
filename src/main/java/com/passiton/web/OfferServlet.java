@@ -98,7 +98,7 @@ public class OfferServlet extends HttpServlet {
         Offer latest = offerDao.findLatest(listing.getId(), me.getId());
         if (latest != null && "pending".equals(latest.getStatus())) {
             offerDao.updatePending(latest.getId(), me.getId(), amount, message);
-            Flash.ok(req, "You already had an offer here, so it was updated to " + latest.withAmount(amount) + ".");
+            Flash.ok(req, "You already had an offer here, so it was updated to " + Money.rp(amount) + ".");
         } else {
             offerDao.create(listing.getId(), me.getId(), amount, message);
             Flash.ok(req, "Offer sent. The seller will see it in their offers.");
@@ -120,7 +120,7 @@ public class OfferServlet extends HttpServlet {
         boolean ok = offerDao.updatePending(offer.getId(), me.getId(), amount,
                 form.get("message").isEmpty() ? null : form.get("message"));
         if (ok) {
-            Flash.ok(req, "Your offer is now " + offer.withAmount(amount) + ".");
+            Flash.ok(req, "Your offer is now " + Money.rp(amount) + ".");
         } else {
             Flash.error(req, "That offer can't be changed any more.");
         }

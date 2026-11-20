@@ -26,10 +26,6 @@ public class Offer {
         return com.passiton.util.Money.rp(amount);
     }
 
-    public String withAmount(int rupiah) {
-        return com.passiton.util.Money.rp(rupiah);
-    }
-
     public String getListingPriceText() {
         return com.passiton.util.Money.price(listingPrice);
     }

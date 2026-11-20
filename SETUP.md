@@ -92,9 +92,11 @@ takes about a minute to wake it.
 ### 1. Database on Aiven
 1. Sign up at aiven.io → **Create service** → **MySQL** → **Free** plan → pick a region close to you → create.
 2. On the service's **Overview** page, note the **Host**, **Port** and the `avnadmin` **Password**.
-3. Load the tables from this folder (PowerShell; it asks for the avnadmin password):
+3. Load the tables from this folder (PowerShell; each asks for the avnadmin password). The 9.x client only
+   runs `source` with `--commands`, and only one `source` per command:
    ```
-   D:\dev\mysql-9.7.2-winx64\bin\mysql.exe --host=<host> --port=<port> --user=avnadmin --password --ssl-mode=REQUIRED --execute="source sql/schema.sql; source sql/seed.sql"
+   D:\dev\mysql-9.7.2-winx64\bin\mysql.exe --host=<host> --port=<port> --user=avnadmin --password --ssl-mode=REQUIRED --commands --execute="source sql/schema.sql"
+   D:\dev\mysql-9.7.2-winx64\bin\mysql.exe --host=<host> --port=<port> --user=avnadmin --password --ssl-mode=REQUIRED --commands --execute="source sql/seed.sql"
    ```
 4. Create the app's own user the same way (`--execute="..."`), with a new strong password:
    ```sql

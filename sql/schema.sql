@@ -91,7 +91,7 @@ CREATE TABLE reports (
     listing_id  INT NOT NULL,
     reporter_id INT NOT NULL,
     reason      VARCHAR(300) NOT NULL,
-    status      ENUM('open','dismissed','removed') NOT NULL DEFAULT 'open',
+    status      ENUM('open','dismissed') NOT NULL DEFAULT 'open',
     created_at  DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT fk_report_listing  FOREIGN KEY (listing_id)  REFERENCES listings(id) ON DELETE CASCADE,
     CONSTRAINT fk_report_reporter FOREIGN KEY (reporter_id) REFERENCES users(id)

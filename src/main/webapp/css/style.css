@@ -7,7 +7,6 @@
     --accent-strong: #1F4FA8;
     --on-accent: #FFFFFF;
     --pin: #E0475B;
-    --focus: #1F4FA8;
     --danger: #C0293F;
     --bar: #2F6FEB;
     --ok: #2E8B57;
@@ -40,7 +39,6 @@
         --accent-strong: #8DB0FF;
         --on-accent: #10172A;
         --pin: #FF6B7D;
-        --focus: #8DB0FF;
         --danger: #FF8A94;
         --bar: #5B8CF5;
         --ok: #4CC38A;
@@ -64,7 +62,6 @@
     --accent-strong: #8DB0FF;
     --on-accent: #10172A;
     --pin: #FF6B7D;
-    --focus: #8DB0FF;
     --danger: #FF8A94;
     --bar: #5B8CF5;
     --ok: #4CC38A;
@@ -123,7 +120,7 @@ img { display: block; max-width: 100%; }
 }
 
 :focus-visible {
-    outline: 3px solid var(--focus);
+    outline: 3px solid var(--accent-strong);
     outline-offset: 3px;
     border-radius: 6px;
 }
@@ -366,7 +363,7 @@ input, textarea, select { font: inherit; color: inherit; }
     border-radius: 999px;
     box-shadow: var(--shadow);
 }
-.searchbar:focus-within { outline: 3px solid var(--focus); outline-offset: 3px; }
+.searchbar:focus-within { outline: 3px solid var(--accent-strong); outline-offset: 3px; }
 .searchbar .icon { color: var(--ink-soft); }
 .searchbar input {
     flex: 1;
@@ -944,7 +941,7 @@ input, textarea, select { font: inherit; color: inherit; }
 .stars-input label:hover,
 .stars-input label:hover ~ label { color: var(--star); }
 .stars-input label:hover { scale: 1.12; }
-.stars-input input:focus-visible + label { outline: 3px solid var(--focus); outline-offset: 2px; border-radius: 6px; }
+.stars-input input:focus-visible + label { outline: 3px solid var(--accent-strong); outline-offset: 2px; border-radius: 6px; }
 
 .review-delete { margin-top: 20px; padding-top: 16px; border-top: 1.5px dashed var(--line); }
 
@@ -962,7 +959,7 @@ img.avatar { object-fit: cover; padding: 0; }
 .avatar-edit { display: flex; flex-wrap: wrap; align-items: center; gap: 20px; }
 .avatar-edit__controls { display: grid; gap: 8px; justify-items: start; }
 .avatar-edit__pick { position: relative; cursor: pointer; }
-.avatar-edit__pick:has(input:focus-visible) { outline: 3px solid var(--focus); outline-offset: 3px; }
+.avatar-edit__pick:has(input:focus-visible) { outline: 3px solid var(--accent-strong); outline-offset: 3px; }
 
 .seller-head {
     display: flex;
@@ -1296,7 +1293,7 @@ img.avatar { object-fit: cover; padding: 0; }
     transition: border-color 0.15s, background-color 0.15s;
 }
 .input:hover { border-color: color-mix(in srgb, var(--ink-soft) 55%, transparent); }
-.input:focus-visible { outline: 3px solid var(--focus); outline-offset: 1px; background: var(--card); }
+.input:focus-visible { outline: 3px solid var(--accent-strong); outline-offset: 1px; background: var(--card); }
 .input::placeholder { color: var(--ink-soft); }
 .input[aria-invalid="true"] { border-color: var(--danger); }
 
@@ -1364,7 +1361,7 @@ select.input {
     border-color: var(--accent-strong);
     background: color-mix(in srgb, var(--accent) 16%, var(--card));
 }
-.choice input:focus-visible + span { outline: 3px solid var(--focus); outline-offset: 2px; }
+.choice input:focus-visible + span { outline: 3px solid var(--accent-strong); outline-offset: 2px; }
 
 .dropzone {
     position: relative;
@@ -1388,7 +1385,7 @@ select.input {
     border-color: var(--accent-strong);
     background: color-mix(in srgb, var(--accent) 8%, var(--paper));
 }
-.dropzone:has(.dropzone__input:focus-visible) { outline: 3px solid var(--focus); outline-offset: 3px; }
+.dropzone:has(.dropzone__input:focus-visible) { outline: 3px solid var(--accent-strong); outline-offset: 3px; }
 .dropzone__input {
     position: absolute;
     width: 1px;

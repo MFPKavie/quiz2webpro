@@ -26,10 +26,6 @@ public class Listing {
     private LocalDateTime updatedAt;
     private String coverPhoto;
 
-    public String getPriceText() {
-        return com.passiton.util.Money.price(price);
-    }
-
     public String getPriceNumber() {
         return com.passiton.util.Money.number(price);
     }

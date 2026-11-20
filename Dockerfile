@@ -1,6 +1,8 @@
 # Pass It On on Render: Tomcat 11 + JDK 25, no build tool. The app is served at the site root.
 FROM tomcat:11.0.29-jdk25-temurin
 
+# turn off Tomcat's shutdown port 8005: Render's port scanner knocks on it and floods the log with warnings
+RUN sed -i 's/port="8005"/port="-1"/' /usr/local/tomcat/conf/server.xml
 COPY src/main/webapp /usr/local/tomcat/webapps/ROOT
 COPY src/main/java /tmp/java
 RUN find /tmp/java -name '*.java' > /tmp/sources.txt \

@@ -41,6 +41,20 @@
         });
     });
 
+    // a double click must not post twice (two offers, two listings)
+    document.addEventListener("submit", function (event) {
+        var form = event.target;
+        if (event.defaultPrevented || form.method !== "post") return;
+        // after this tick: a disabled button would drop its own name/value from the post
+        setTimeout(function () {
+            form.querySelectorAll("button[type=submit], button:not([type])").forEach(function (b) { b.disabled = true; });
+        }, 0);
+    });
+    // the Back button can bring the page back with its buttons still disabled
+    window.addEventListener("pageshow", function (event) {
+        if (event.persisted) document.querySelectorAll("button[disabled]").forEach(function (b) { b.disabled = false; });
+    });
+
     var photoInput = document.getElementById("photos");
     if (photoInput) {
         var zone = photoInput.closest(".dropzone");
