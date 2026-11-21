@@ -677,7 +677,15 @@ input, textarea, select { font: inherit; color: inherit; }
     font-size: 0.85rem;
 }
 .card__seller { margin: 0; color: var(--ink-soft); font-size: 0.85rem; }
-.card__sticker { top: -12px; right: -10px; min-width: 68px; height: 68px; font-size: 0.95rem; }
+.card__price {
+    margin: 12px 0 0;
+    padding-top: 10px;
+    border-top: 1px dashed color-mix(in srgb, var(--ink) 20%, transparent);
+    color: var(--ink);
+    font-size: 1.15rem;
+    font-weight: 700;
+}
+.card__price small { font-size: 0.75em; font-weight: 500; color: var(--ink-soft); }
 
 .chip {
     display: inline-flex;
@@ -729,7 +737,7 @@ input, textarea, select { font: inherit; color: inherit; }
     .card__body { padding: 12px 12px 12px; }
     .card__title { font-size: 0.92rem; }
     .card__category { display: none; }
-    .card__sticker { top: -12px; right: -8px; min-width: 60px; height: 60px; padding: 0 4px; font-size: 0.8rem; }
+    .card__price { font-size: 1rem; }
 }
 
 .crumbs {

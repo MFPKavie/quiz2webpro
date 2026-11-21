@@ -21,9 +21,9 @@
                 <span class="card__category"><c:out value="${l.categoryName}"/></span>
             </p>
             <p class="card__seller">by <c:out value="${l.sellerName}"/></p>
+            <p class="card__price"><c:choose><c:when test="${l.price == 0}">FREE</c:when><c:otherwise><small>Rp</small> ${l.priceNumber}</c:otherwise></c:choose></p>
         </div>
     </a>
-    <span class="sticker card__sticker"><c:choose><c:when test="${l.price == 0}">FREE</c:when><c:otherwise><small class="sticker__cur">Rp</small>${l.priceNumber}</c:otherwise></c:choose></span>
 
 <%-- the heart sits outside the card link: a button inside a link is not allowed --%>
     <c:choose>
